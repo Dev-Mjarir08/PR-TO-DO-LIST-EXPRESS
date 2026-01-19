@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Todo App</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: #f5f7fa;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        .card-custom {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+        }
+
+        .form-control {
+            border-radius: 8px;
+        }
+
+        .btn-success {
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        table {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: #212529;
+        }
+
+        .action-btn {
+            font-size: 0.85rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        caption h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="py-5">
+        <div class="container">
+
+            <!-- Add Todo -->
+            <div class="row justify-content-center mb-4">
+                <div class="col-md-6">
+                    <div class="card-custom p-4">
+                        <h3 class="text-center mb-4">Todo List</h3>
+
+                        <form method="post" action="/create">
+                            <div class="mb-3">
+                                <label class="form-label">Enter Todo</label>
+                                <input type="text" name="text" class="form-control" placeholder="Write something...">
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-success">
+                                    Add Todo
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Todo Table -->
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card-custom p-4">
+
+                        <table class="table table-hover table-bordered align-middle mb-0 caption-top">
+                            <caption class="text-center ">
+                                <h2>Todo Items</h2>
+                            </caption>
+
+                            <thead class="text-center text-white">
+                                <tr>
+                                    <th style="width:10%">#</th>
+                                    <th>Todo</th>
+                                    <th style="width:25%">Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <% todos.forEach((todo, index)=> { %>
+                                    <tr>
+                                        <td class="text-center"><%= index + 1 %></td>
+                                        <td><%= todo.text %></td>
+                                        <td class="text-center">
+                                            <a href="/delete/todo?id=<%= todo.id %>"
+                                                class="btn btn-danger action-btn">
+                                                Delete
+                                            </a>
+                                            <a href="/edit/todo/<%= todo.id %>"
+                                                class="btn btn-warning action-btn ms-1">
+                                                Edit
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
