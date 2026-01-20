@@ -1,7 +1,6 @@
 # PR-TO-DO-LIST-EXPRESS
 📌 PR-TO-DO-LIST-EXPRESS
 
-Live Demo: https://pr-to-do-list-express.onrender.com/
 
 🧾 About the Project
 
